@@ -1,5 +1,11 @@
 <h1>New post</h1>
 
-<%= render 'form' %>
+<%= form_for @post do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name, id: "Name" %>
+  <%= f.label :content %>
+  <%= f.text_area :content, id: "Content" %>
 
-<%= link_to 'Back', posts_path %>
+  <%= collection_check_boxes :post, :tag_ids, Tag.all, :id, :name %>
+  <%= f.submit %>
+<% end %>
